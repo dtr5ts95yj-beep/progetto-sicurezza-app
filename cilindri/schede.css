@@ -1,0 +1,37 @@
+.cil .ibtn{width:28px;height:28px;border-radius:50%;flex:none;background:#eef2f7;color:#0a7aff;font-weight:800;font-size:14px;font-style:italic;font-family:Georgia,serif;display:flex;align-items:center;justify-content:center}
+.cil .ibtn:hover{background:#0a7aff;color:#fff}
+.sheet{position:fixed;inset:0;background:rgba(20,20,24,.4);backdrop-filter:blur(6px);z-index:60;display:none;align-items:center;justify-content:center;padding:24px}
+.sh-box{width:min(760px,96vw);max-height:92vh;background:#fff;border-radius:18px;box-shadow:0 30px 80px rgba(0,0,0,.35);display:flex;flex-direction:column;overflow:hidden;position:relative}
+.sh-x{position:absolute;top:12px;right:14px;font-size:24px;color:#8e8e93;line-height:1;padding:4px 8px;z-index:2}
+.sh-x:hover{color:#1d1d1f}
+.sh-c{overflow:auto;padding:24px 28px 10px}
+.sh-h{display:flex;gap:16px;align-items:flex-start;padding-right:30px}
+.sh-h h2{font-size:21px;font-family:Consolas,"DejaVu Sans Mono",monospace;margin:0}
+.sh-h p{font-size:13px;color:#3a3a3c;margin:3px 0 0}
+.sh-liv{flex:none;text-align:center;background:#f2f2f7;border-radius:11px;padding:7px 14px}
+.sh-liv b{display:block;font-size:15px}.sh-liv span{font-size:10px;color:#8e8e93;text-transform:uppercase;letter-spacing:.04em}
+.sh-tag{display:flex;flex-wrap:wrap;gap:5px;margin:12px 0 4px}
+.sh-s{margin-top:18px}
+.sh-s h3{font-size:11.5px;font-weight:700;color:#8e8e93;letter-spacing:.05em;text-transform:uppercase;margin:0 0 7px}
+.sh-s p{font-size:14px;line-height:1.5;margin:0;color:#1d1d1f}
+.sh-s ul{margin:0;padding-left:18px}
+.sh-s li{font-size:13.5px;line-height:1.5;margin-bottom:4px;color:#1d1d1f}
+.sh-g{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.sh-f{margin:20px 0 6px;font-size:11.5px;color:#8e8e93;background:#f7f7f9;border-radius:10px;padding:10px 12px;line-height:1.45}
+.sh-b{display:flex;gap:8px;justify-content:flex-end;padding:12px 28px;border-top:.5px solid rgba(0,0,0,.1);background:#fafafc}
+@media(max-width:700px){.sh-g{grid-template-columns:1fr}}
+
+/* scheda breve */
+.sh-h{align-items:center}
+.sh-big{font-size:17px;font-weight:650;line-height:1.35;margin:16px 0 4px}
+.sh-sub{font-size:14px;color:#3a3a3c;line-height:1.5;margin:0}
+.sh-k{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:7px}
+.sh-k li{font-size:13.5px;line-height:1.45;padding-left:20px;position:relative;color:#1d1d1f}
+.sh-k li::before{content:"";position:absolute;left:4px;top:7px;width:6px;height:6px;border-radius:50%;background:#0a7aff}
+.sh-note{font-size:12.5px;color:#6e6e73;background:#f5f5f7;border-radius:10px;padding:9px 12px;margin-top:14px;line-height:1.45}
+.sh-note.att{background:#fff4e5;color:#9a5b00}
+.sh-d{margin-top:18px;border-top:.5px solid rgba(0,0,0,.1);padding-top:6px}
+.sh-d summary{font-size:13px;color:#0a7aff;cursor:pointer;padding:8px 0;list-style:none;font-weight:600}
+.sh-d summary::-webkit-details-marker{display:none}
+.sh-d summary::before{content:"▸ ";font-size:11px}
+.sh-d[open] summary::before{content:"▾ "}

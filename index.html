@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Progetto Sicurezza AF</title>
+<link rel="stylesheet" href="home.css">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#c4161c">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Sicurezza AF">
+<meta name="format-detection" content="telephone=no">
+<link rel="apple-touch-icon" href="./ico/apple-touch-icon.png">
+<link rel="icon" href="./ico/icona-192.png">
+<link rel="manifest" href="./manifest.json">
+<link rel="stylesheet" href="./mobile.css">
+</head>
+<body>
+<div class="home">
+ <header>
+  <div class="logo">AF</div>
+  <div class="tit">
+   <h1>Progetto Sicurezza</h1>
+   <p>Franzini · uso interno. Scegli cosa ti serve: il programma ti porta ai codici giusti dell'assortimento.</p>
+  </div>
+ </header>
+
+ <h2 class="sec">DATI</h2>
+ <div id="dati"></div>
+
+ <h2 class="sec">PRONTI DA USARE</h2>
+ <div class="grid">
+
+  <a class="mod" href="maniglioni/index.html">
+   <div class="ic">
+    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round">
+     <rect x="12" y="7" width="31" height="50" rx="2.5" stroke-width="2.6"/>
+     <path d="M16 30h31"/><circle cx="47" cy="30" r="4.2" fill="currentColor" stroke="none"/>
+     <path d="M52 17v26" stroke-width="2.2"/>
+    </svg>
+   </div>
+   <div class="tx">
+    <b>Maniglioni antipanico</b>
+    <p>Porta, punti di chiusura, marca e serie: ti dà tutti i codici da ordinare, con la stampa del foglio di lavoro.</p>
+    <span class="tag">CISA · ISEO · Antipanic</span>
+   </div>
+   <div class="go">›</div>
+  </a>
+
+  <a class="mod" href="cilindri/index.html">
+   <div class="ic">
+    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round">
+     <circle cx="32" cy="20" r="11"/><path d="M23 29h18v26a2 2 0 0 1-2 2H25a2 2 0 0 1-2-2z"/>
+     <path d="M32 16v8" stroke-width="3.4"/><circle cx="32" cy="45" r="3" fill="currentColor" stroke="none"/>
+    </svg>
+   </div>
+   <div class="tx">
+    <b>Cilindri</b>
+    <p>Dai la misura e ti dice cosa hai in assortimento, con la scheda tecnica da spiegare al cliente.</p>
+    <span class="tag">CISA · ISEO · Omec · Viro</span>
+   </div>
+   <div class="go">›</div>
+  </a>
+
+ </div>
+
+ <h2 class="sec">IN ARRIVO</h2>
+ <div class="grid">
+  <div class="mod soon"><div class="ic">S</div><div class="tx"><b>Serrature da infilare</b><p>Per porte in legno, ferro e alluminio: entrata, interasse, frontale.</p></div></div>
+  <div class="mod soon"><div class="ic">A</div><div class="tx"><b>Serrature da applicare</b><p>Serrature e elettroserrature applicate alla porta.</p></div></div>
+  <div class="mod soon"><div class="ic">C</div><div class="tx"><b>Serrature da cancello</b><p>Cancelletti e cancelli, con i relativi accessori.</p></div></div>
+  <div class="mod soon"><div class="ic">P</div><div class="tx"><b>Serrature da scuretti</b><p>Scuri, persiane e serramenti piccoli.</p></div></div>
+ </div>
+
+ <footer>Progetto Sicurezza AF · il configuratore cresce un pezzo alla volta: ogni blocco nuovo entra qui.</footer>
+</div>
+<script src="./dati.js"></script>
+<script src="./dati-home.js"></script>
+<script src="./mobile.js"></script>
+<script>
+if("serviceWorker" in navigator && location.protocol === "https:"){
+  window.addEventListener("load", function(){
+    navigator.serviceWorker.register("./sw.js", {scope:"./"}).catch(function(){});
+  });
+}
+</script>
+</body>
+</html>

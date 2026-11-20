@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Cilindri · Progetto Sicurezza</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="cilindri.css">
+<link rel="stylesheet" href="schede.css">
+<style>.back{display:block;font-size:11.5px;color:#6e6e73;text-decoration:none;padding:2px 2px 8px;letter-spacing:.01em}.back:hover{color:#0a7aff}</style>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#c4161c">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Sicurezza AF">
+<meta name="format-detection" content="telephone=no">
+<link rel="apple-touch-icon" href="../ico/apple-touch-icon.png">
+<link rel="icon" href="../ico/icona-192.png">
+<link rel="manifest" href="../manifest.json">
+<link rel="stylesheet" href="../mobile.css">
+</head>
+<body>
+<div class="app">
+ <aside class="side">
+  <a class="back" href="../index.html" title="Torna a Progetto Sicurezza">‹ Progetto Sicurezza</a>
+  <div class="appname"><div class="logo">AF</div><div><b>Progetto Sicurezza</b><span>Cilindri · Franzini</span></div></div>
+  <div class="sec">COSA CERCHI</div>
+  <nav id="nav"></nav>
+  <div class="brandcard" id="brandcard"></div>
+ </aside>
+ <main class="main">
+  <div class="topbar">
+   <div class="crumb" id="crumb"></div>
+   <div class="searchwrap">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8e8e93" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+    <input class="search" id="search" placeholder="Cerca codice o descrizione" autocomplete="off">
+   </div>
+  </div>
+  <div class="body">
+   <div class="hero">
+    <svg class="door" id="draw" viewBox="0 0 400 520" preserveAspectRatio="xMidYMid meet"></svg>
+    <div class="herocap" id="herocap"></div>
+   </div>
+   <div class="content"><div class="scroll" id="page"></div><div class="foot"><span id="passo" style="font-size:12px;color:#6e6e73"></span><div class="prog" style="visibility:hidden"><i></i></div><button class="btn s" id="back">‹ Indietro</button><button class="btn p" id="next">Continua ›</button></div></div>
+  </div>
+ </main>
+ <aside class="insp">
+  <h2>Cilindri scelti</h2><div class="c">Il <b>+</b> aggiunge, il cilindro apre la scheda</div>
+  <div class="lines" id="lines"></div>
+  <div class="bc" id="bcbox" hidden><small>Barcode</small><svg id="bcprev" width="100%" height="40"></svg><small id="bctext" style="font-family:Consolas,monospace"></small></div>
+  <div class="inbtn"><button class="btn s" id="clear">Svuota</button><button class="btn p" id="copy">Copia codici</button></div>
+ </aside>
+</div>
+
+<script src="../dati.js"></script>
+<script src="code128.js"></script>
+<script src="cilindri.js"></script>
+<script src="schede.js"></script>
+<script src="../mobile.js"></script>
+<script>
+if("serviceWorker" in navigator && location.protocol === "https:"){
+  window.addEventListener("load", function(){
+    navigator.serviceWorker.register("../sw.js", {scope:"../"}).catch(function(){});
+  });
+}
+</script>
+</body>
+</html>

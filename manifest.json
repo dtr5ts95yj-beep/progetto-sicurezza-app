@@ -1,0 +1,20 @@
+{
+  "name": "Progetto Sicurezza AF",
+  "short_name": "Sicurezza AF",
+  "description": "Configuratore maniglioni antipanico e cilindri. Franzini Annibale, uso interno.",
+  "lang": "it",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f5f7",
+  "theme_color": "#c4161c",
+  "icons": [
+    { "src": "ico/icona-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "ico/icona-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "ico/icona-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Cilindri", "url": "./cilindri/index.html" },
+    { "name": "Maniglioni antipanico", "url": "./maniglioni/index.html" }
+  ]
+}

@@ -1,0 +1,4 @@
+# i dati non vanno mai in questo repository: stanno sul Drive
+dati-progetto-sicurezza.json
+*dati*.json
+!manifest.json
