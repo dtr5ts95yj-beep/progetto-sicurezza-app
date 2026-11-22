@@ -1,0 +1,53 @@
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#f6f4ef;color:#24292d;font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;border:none;background:none;cursor:pointer}
+.sf{max-width:900px;margin:auto;padding:24px 20px 40px}
+.top{display:flex;align-items:center;gap:12px;padding-bottom:18px;border-bottom:1px solid #deded7}
+.back{font-size:12px;color:#697073}
+.brand{display:flex;align-items:center;gap:10px;margin-left:auto}
+.mark{display:grid;place-items:center;width:38px;height:38px;border-radius:11px;background:#bd2731;color:#fff;font-weight:800}
+.brand strong{display:block;font-size:13px}
+.brand span{display:block;font-size:10px;color:#697073;letter-spacing:.08em}
+.intro{padding:24px 0 16px}
+.eyebrow{color:#bd2731;font-size:10px;font-weight:750;letter-spacing:.14em}
+h1{font-size:clamp(28px,6vw,44px);letter-spacing:-.04em;line-height:1.05;margin-top:8px}
+.copy{color:#697073;font-size:13px;margin-top:10px;line-height:1.6}
+.prog{height:6px;border-radius:3px;background:#e5e5ea;overflow:hidden;margin-bottom:18px}
+.prog i{display:block;height:100%;background:#bd2731;border-radius:3px;transition:width .25s}
+.page{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:center;background:#fffefa;border:1px solid #deded7;border-radius:14px;padding:14px;cursor:pointer;text-align:left;width:100%}
+.opt:hover{border-color:#b8beb3}
+.opt.sel{border-color:#bd2731;box-shadow:0 0 0 1px #bd2731}
+.opt b{font-size:15px;display:block}
+.opt p{font-size:12px;color:#697073;margin-top:3px;line-height:1.5}
+.radio{width:22px;height:22px;border-radius:50%;border:1.5px solid #c7c7cc;flex:none}
+.opt.sel .radio{border:6.5px solid #bd2731}
+.field{display:flex;gap:10px;align-items:center;background:#fffefa;border:1px solid #deded7;border-radius:14px;padding:14px}
+.field input{flex:1;min-width:0;height:44px;border:1px solid #deded7;border-radius:10px;background:#fffefa;padding:0 12px;font:inherit}
+.field input:focus{border-color:#bd2731;box-shadow:0 0 0 3px #bd27311c}
+.foot{display:flex;gap:10px;margin-top:18px}
+.btn{min-height:46px;padding:0 18px;border-radius:11px;background:#24292d;color:#fff;font-size:13px;font-weight:700;display:inline-flex;align-items:center}
+.btn.alt{background:#eeece6;color:#24292d;border:1px solid #deded7}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.res{display:flex;gap:12px;align-items:flex-start;background:#fffefa;border:1px solid #deded7;border-radius:14px;padding:14px;cursor:pointer}
+.res:hover{border-color:#b8beb3}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-weight:700;font-size:14px}
+.desc{font-size:13px;color:#414e47;margin-top:4px;line-height:1.5}
+.meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.pill{font-size:10px;padding:3px 8px;border-radius:20px;background:#eeece6;color:#414e47}
+.pill.ok{background:#e6f1e7;color:#2e653b}
+.pill.zero{background:#f7e5e4;color:#92232a}
+.note{margin-top:14px;padding:12px;border-radius:10px;background:#fff9ed;color:#77521c;font-size:12px;line-height:1.5}
+.sheet{position:fixed;inset:0;background:#161c2390;backdrop-filter:blur(5px);display:grid;place-items:center;padding:18px;z-index:50}
+.box{position:relative;width:min(680px,100%);max-height:90dvh;overflow:auto;background:#fffefa;border:1px solid #deded7;border-radius:20px;box-shadow:0 30px 80px #0003}
+.x{position:absolute;top:10px;right:10px;width:38px;height:38px;border-radius:11px;background:#eeece6;border:1px solid #deded7;font-size:20px}
+.body{padding:24px}
+.body h2{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:20px;letter-spacing:-.02em}
+.body .desc{margin-top:8px}
+.kv{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.kv div{background:#eeece6;border-radius:10px;padding:10px}
+.kv b{display:block;font-size:10px;color:#697073;letter-spacing:.08em}
+.kv span{font-size:14px;font-weight:650}
+.actions{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+@media(max-width:720px){.kv{grid-template-columns:1fr}}
