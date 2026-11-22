@@ -1,5 +1,5 @@
 /* Progetto Sicurezza AF — tiene l'app in memoria così funziona anche senza rete. */
-const CACHE = "af-sicurezza-v3";
+const CACHE = "af-sicurezza-v4";
 const FILE = [
   "./", "./index.html", "./home.css", "./mobile.css", "./mobile.js", "./manifest.json",
   "./dati.js", "./dati-home.js",
@@ -32,15 +32,9 @@ self.addEventListener("fetch", e => {
   const r = e.request;
   if(r.method !== "GET" || !r.url.startsWith(self.location.origin)) return;
   e.respondWith(
-    caches.match(r).then(hit => {
-      if(hit){
-        fetch(r).then(res => { if(res && res.ok) caches.open(CACHE).then(c => c.put(r, res)); }).catch(() => {});
-        return hit;
-      }
-      return fetch(r).then(res => {
-        if(res && res.ok){ const copia = res.clone(); caches.open(CACHE).then(c => c.put(r, copia)); }
-        return res;
-      }).catch(() => caches.match("./index.html"));
-    })
+    fetch(r).then(res => {
+      if(res && res.ok){ const copia = res.clone(); caches.open(CACHE).then(c => c.put(r, copia)); }
+      return res;
+    }).catch(() => caches.match(r).then(hit => hit || caches.match("./index.html")))
   );
 });
