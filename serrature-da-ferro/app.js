@@ -14,7 +14,7 @@ const STEPS=[
  {id:'frontale',nome:'Frontale'},
  {id:'risultati',nome:'Risultati'}
 ];
-function items(){return window.SERRATURE_FERRO||[];}
+function items(){try{return JSON.parse(localStorage.getItem("af_serrature_ferro")||"[]");}catch(e){return[];}}
 function opt(sel,inner,act,dis){return '<button class="opt'+(sel?' sel':'')+(dis?' dis':'')+'" data-act="'+esc(act)+'"'+(dis?' disabled':'')+'>'+inner+'<span class="radio"></span></button>';}
 function pageImpiego(){
   const o=[

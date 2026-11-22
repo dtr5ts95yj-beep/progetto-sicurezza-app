@@ -23,8 +23,13 @@ const ITA = d => {
 
 let confermaTogli = false;
 
+function leggiSerrature(){
+  try{ return JSON.parse(localStorage.getItem("af_serrature_ferro") || "[]"); }catch(e){ return []; }
+}
+
 function disegna(){
   const d = window.AF.leggi();
+  const sf = leggiSerrature();
   const serve = new URLSearchParams(location.search).has("serve");
 
   if(d){
@@ -35,11 +40,13 @@ function disegna(){
         '<div class="dtop"><span class="dpall">✓</span><div>' +
           '<b>Dati caricati su questo telefono</b>' +
           '<p>' + nc + ' cilindri · ' + nm + ' articoli maniglioni' +
+          (sf.length ? ' · ' + sf.length + ' serrature da ferro' : '') +
           (d.importato ? ' · importati il ' + esc(ITA(d.importato)) : '') +
           (d.data ? ' · aggiornamento gestionale ' + esc(d.data) : '') + '</p>' +
         '</div></div>' +
         '<div class="dbtn">' +
           '<label class="dbt p">Aggiorna i dati<input type="file" id="dfile" accept=".json,application/json" hidden></label>' +
+          '<label class="dbt s">Serrature da ferro<input type="file" id="sfile" accept=".json,application/json" hidden></label>' +
           '<button class="dbt s" id="dtogli">' + (confermaTogli ? "Tocca di nuovo per togliere" : "Togli da questo telefono") + '</button>' +
         '</div>' +
       '</div>';
@@ -54,6 +61,7 @@ function disegna(){
         '</div></div>' +
         '<div class="dbtn">' +
           '<label class="dbt p">Importa il file<input type="file" id="dfile" accept=".json,application/json" hidden></label>' +
+          '<label class="dbt s">Serrature da ferro<input type="file" id="sfile" accept=".json,application/json" hidden></label>' +
         '</div>' +
       '</div>';
   }
@@ -67,6 +75,9 @@ function disegna(){
 
   const f = document.getElementById("dfile");
   if(f) f.addEventListener("change", leggiFile);
+
+  const s = document.getElementById("sfile");
+  if(s) s.addEventListener("change", leggiSerratureFile);
 
   const t = document.getElementById("dtogli");
   if(t) t.addEventListener("click", () => {
@@ -96,6 +107,27 @@ function leggiFile(e){
     /* ricarica così i moduli trovano i dati nuovi */
     avviso("Dati importati: " + d.cilindri.length + " cilindri.", true);
     setTimeout(() => location.replace("index.html"), 900);
+  };
+  r.readAsText(file);
+}
+
+function leggiSerratureFile(e){
+  const file = e.target.files && e.target.files[0];
+  e.target.value = "";
+  if(!file) return;
+  const r = new FileReader();
+  r.onerror = () => avviso("Non sono riuscito a leggere il file.");
+  r.onload = () => {
+    let d;
+    try{ d = JSON.parse(r.result); }
+    catch(err){ avviso("Questo non è il file delle serrature: non si riesce a leggerlo."); return; }
+    if(!Array.isArray(d) || !d.length){ avviso("Il file delle serrature non contiene articoli."); return; }
+    const pulito = d.filter(x => x && x.codice && x.descrizione);
+    if(!pulito.length){ avviso("Nel file non ci sono codici validi."); return; }
+    try{ localStorage.setItem("af_serrature_ferro", JSON.stringify(pulito)); }
+    catch(err){ avviso("Memoria del telefono piena: non sono riuscito a salvare."); return; }
+    avviso("Serrature da ferro importate: " + pulito.length + " codici.", true);
+    disegna();
   };
   r.readAsText(file);
 }
