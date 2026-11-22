@@ -1,13 +1,13 @@
 /* Progetto Sicurezza AF — tiene l'app in memoria così funziona anche senza rete. */
-const CACHE = "af-sicurezza-v1";
+const CACHE = "af-sicurezza-v2";
 const FILE = [
   "./", "./index.html", "./home.css", "./mobile.css", "./mobile.js", "./manifest.json",
   "./dati.js", "./dati-home.js",
   "./ico/icona-192.png", "./ico/icona-512.png", "./ico/apple-touch-icon.png",
   "./cilindri/index.html", "./cilindri/style.css", "./cilindri/cilindri.css",
   "./cilindri/schede.css", "./cilindri/code128.js",
-  "./cilindri/cilindri.js", "./cilindri/schede.js",
-  "./maniglioni/index.html", "./maniglioni/style.css",
+  "./cilindri/cilindri.js", "./cilindri/schede.js", "./cilindri/af-theme.css",
+  "./maniglioni/index.html", "./maniglioni/style.css", "./maniglioni/af-theme.css",
   "./maniglioni/code128.js", "./maniglioni/app.js", "./maniglioni/gestione.js"
 ];
 
