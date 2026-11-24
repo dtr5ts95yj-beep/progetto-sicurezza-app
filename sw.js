@@ -1,5 +1,5 @@
 /* Progetto Sicurezza AF — tiene l'app in memoria così funziona anche senza rete. */
-const CACHE = "af-sicurezza-v3";
+const CACHE = "af-sicurezza-v4";
 const FILE = [
   "./", "./index.html", "./home.css", "./mobile.css", "./mobile.js", "./manifest.json",
   "./dati.js", "./dati-home.js",
