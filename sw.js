@@ -1,5 +1,7 @@
-/* Progetto Sicurezza AF — tiene l'app in memoria così funziona anche senza rete. */
-const CACHE = "af-sicurezza-v5";
+/* Progetto Sicurezza AF — memoria per l'uso senza rete.
+   Pagine e programmi: prima la rete, così gli aggiornamenti si vedono subito;
+   se la rete non c'è si usa la copia tenuta da parte. */
+const CACHE = "af-sicurezza-v6";
 const FILE = [
   "./", "./index.html", "./home.css", "./mobile.css", "./mobile.js", "./manifest.json",
   "./dati.js", "./dati-home.js",
@@ -28,13 +30,29 @@ self.addEventListener("activate", e => {
   );
 });
 
+/* il contenuto che cambia quando aggiorno l'app */
+const DAAGGIORNARE = /\.(html|js|css|json)$|\/$/i;
+
 self.addEventListener("fetch", e => {
   const r = e.request;
   if(r.method !== "GET" || !r.url.startsWith(self.location.origin)) return;
+
+  if(r.mode === "navigate" || DAAGGIORNARE.test(new URL(r.url).pathname)){
+    /* prima la rete: così la versione nuova si vede alla prima apertura */
+    e.respondWith(
+      fetch(r).then(res => {
+        if(res && res.ok){ const copia = res.clone(); caches.open(CACHE).then(c => c.put(r, copia)); }
+        return res;
+      }).catch(() => caches.match(r).then(hit => hit || caches.match("./index.html")))
+    );
+    return;
+  }
+
+  /* immagini e icone: va bene la copia tenuta da parte */
   e.respondWith(
-    fetch(r).then(res => {
+    caches.match(r).then(hit => hit || fetch(r).then(res => {
       if(res && res.ok){ const copia = res.clone(); caches.open(CACHE).then(c => c.put(r, copia)); }
       return res;
-    }).catch(() => caches.match(r).then(hit => hit || caches.match("./index.html")))
+    }))
   );
 });
