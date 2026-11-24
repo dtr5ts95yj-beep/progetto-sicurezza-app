@@ -46,7 +46,7 @@ function pageForma(){
 }
 function pageMisura(id,label,help){
   const v=S[id];
-  return '<h2>'+label+'</h2><div class="page"><div class="field"><input id="'+id+'" type="number" inputmode="decimal" min="0" step="0.5" placeholder="mm" value="'+(v==='ns'?'':v)+'"><span>mm</span></div><div class="note">'+help+'</div><button class="opt'+(v==='ns'?' sel':'')+'" data-act="'+id+':ns"><div><b>Non so</b><p>Proseguo senza questa misura.</p></div><span class="radio"></span></button></div>';
+  return '<h2>'+label+'</h2><div class="page"><div class="field"><input id="'+id+'" type="number" inputmode="decimal" min="0" step="0.5" value="'+(v==='ns'?'':v)+'"><span>mm</span></div><div class="note">'+help+'</div><button class="opt'+(v==='ns'?' sel':'')+'" data-act="'+id+':ns"><div><b>Non so</b><p>Proseguo senza questa misura.</p></div><span class="radio"></span></button></div>';
 }
 function pageRisultati(){
   const {esatti,daVer}=filtra();
@@ -59,7 +59,7 @@ function pageRisultati(){
   return h+'</div>';
 }
 function card(x){
-  return '<article class="res" data-code="'+esc(x.codice)+'"><div><div class="code">'+esc(x.codice)+'</div><div class="desc">'+esc(x.descrizione)+'</div><div class="meta"><span class="pill">'+esc(x.marca)+'</span><span class="pill">'+esc(x.impiego)+'</span><span class="pill '+(x.giacenza>0?'ok':'zero')+'">'+(x.giacenza>0?'Giacenza '+x.giacenza:'Giacenza 0')+'</span></div></div></article>';
+  return '<article class="res" data-code="'+esc(x.codice)+'"><div class="t"><div class="code">'+esc(x.codice)+'</div><div class="desc">'+esc(x.descrizione)+'</div><div class="meta"><span class="pill">'+esc(x.marca)+'</span><span class="pill">'+esc(x.impiego)+'</span></div></div></article>';
 }
 function filtra(){
   const esatti=[],daVer=[];
@@ -108,7 +108,7 @@ $('sheet').addEventListener('click',e=>{if(e.target===$('sheet'))$('sheet').hidd
 function openSheet(code){
   const x=items().find(y=>y.codice===code);
   if(!x)return;
-  $('body').innerHTML='<p class="eyebrow">'+esc(x.marca)+' · '+esc(x.impiego)+'</p><h2>'+esc(x.codice)+'</h2><p class="desc">'+esc(x.descrizione)+'</p><div class="kv"><div><b>GIACENZA</b><span>'+x.giacenza+'</span></div><div><b>TIPO</b><span>'+esc(x.tipo)+'</span></div><div><b>MANDATE</b><span>'+(x.mandate||'—')+'</span></div><div><b>LATO</b><span>'+(x.lato?x.lato.toUpperCase():'—')+'</span></div><div><b>FORMA</b><span>'+(x.forma||'—')+'</span></div><div><b>ENTRATA</b><span>'+(x.entrata||'—')+'</span></div><div><b>INTERASSE</b><span>'+(x.interasse||'—')+'</span></div><div><b>FRONTALE</b><span>'+(x.frontale||'—')+'</span></div></div><div class="note">Le misure non presenti nell’archivio vanno verificate sul catalogo del produttore prima dell’ordine.</div><div class="actions"><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/search?tbm=shop&q='+encodeURIComponent(x.codice)+'">Cerca online</a><button class="btn alt" id="sheet-close">Chiudi</button></div>';
+  $('body').innerHTML='<p class="eyebrow">'+esc(x.marca)+' · '+esc(x.impiego)+'</p><h2>'+esc(x.codice)+'</h2><p class="desc">'+esc(x.descrizione)+'</p><div class="kv"><div><b>TIPO</b><span>'+esc(x.tipo)+'</span></div><div><b>MANDATE</b><span>'+(x.mandate||'—')+'</span></div><div><b>LATO</b><span>'+(x.lato?x.lato.toUpperCase():'—')+'</span></div><div><b>FORMA</b><span>'+(x.forma||'—')+'</span></div><div><b>ENTRATA</b><span>'+(x.entrata||'—')+'</span></div><div><b>INTERASSE</b><span>'+(x.interasse||'—')+'</span></div><div><b>FRONTALE</b><span>'+(x.frontale||'—')+'</span></div></div><div class="note">Le misure non presenti nell’archivio vanno verificate sul catalogo del produttore prima dell’ordine.</div><div class="actions"><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/search?tbm=shop&q='+encodeURIComponent(x.codice)+'">Cerca online</a><button class="btn alt" id="sheet-close">Chiudi</button></div>';
   $('sheet').hidden=false;
   $('sheet-close').onclick=()=>{$('sheet').hidden=true;};
 }

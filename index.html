@@ -1,32 +1,104 @@
 <!doctype html>
-<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Progetto Sicurezza AF</title><meta name="theme-color" content="#f6f4ef"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Sicurezza AF"><meta name="format-detection" content="telephone=no"><link rel="manifest" href="./manifest.json"><link rel="icon" href="./ico/icona-192.png"><link rel="apple-touch-icon" href="./ico/apple-touch-icon.png">
-<style>
-:root{color-scheme:light;--paper:#f6f4ef;--ink:#24292d;--muted:#697073;--red:#bd2731;--line:#deded7}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased}button,input{font:inherit}button,a{-webkit-tap-highlight-color:transparent}a{color:inherit;text-decoration:none}:focus-visible{outline:3px solid #246cad;outline-offset:5px}[hidden]{display:none!important}.home{max-width:1100px;margin:auto;padding:calc(24px + env(safe-area-inset-top,0px)) 24px calc(30px + env(safe-area-inset-bottom,0px))}.top,.brand{display:flex;align-items:center;gap:12px}.top{justify-content:space-between;padding-bottom:24px;border-bottom:1px solid var(--line)}.brand{min-width:0}.brand-mark{display:grid;place-items:center;flex-shrink:0;width:45px;height:45px;border-radius:13px;background:var(--red);color:white;font-weight:850;font-size:21px}.brand-copy strong{display:block;font-size:12px}.brand-copy span{display:block;margin-top:5px;font-size:9px;color:var(--muted);letter-spacing:.09em}.settings,.close{min-height:44px;padding:0 13px;border:1px solid var(--line);border-radius:12px;background:#eeece6;color:var(--ink);cursor:pointer;font-size:12px;font-weight:650;flex-shrink:0}.intro{padding:40px 0 30px}.eyebrow{margin:0 0 14px;color:var(--red);font-size:10px;font-weight:750;letter-spacing:.15em}h1{margin:0;font-size:clamp(39px,7vw,72px);line-height:1.04;letter-spacing:-.055em;font-weight:800}h1 span{color:var(--red)}.intro-copy{margin:18px 0 0;color:var(--muted);font-size:14px;line-height:1.65}.section-label{display:flex;align-items:center;gap:16px;margin:10px 0 17px;font-size:10px;letter-spacing:.13em;color:var(--muted)}.section-label:after{content:'';height:1px;flex:1;background:var(--line)}.modules{display:grid;grid-template-columns:1fr 1fr;gap:20px}.mod{position:relative;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;min-height:390px;padding:27px;border:1px solid var(--line);border-radius:24px;background:#fffefa;box-shadow:0 10px 25px #24292d08;transition:transform .25s,box-shadow .25s}.mod.dark{background:#242a2e;color:white;border-color:#30373b}.mod:before{content:'';position:absolute;z-index:-1;inset:0;pointer-events:none;background-image:linear-gradient(#7777770a 1px,transparent 1px),linear-gradient(90deg,#7777770a 1px,transparent 1px);background-size:28px 28px}.kicker{margin:0 0 25px;font-size:9px;letter-spacing:.1em;color:var(--muted)}.dark .kicker,.dark .description,.dark .brands{color:#c1c9cc}.mod h2{margin:0;max-width:65%;font-size:clamp(29px,3.3vw,39px);line-height:1.04;letter-spacing:-.045em}.description{max-width:57%;margin:17px 0 0;font-size:12px;line-height:1.6;color:var(--muted)}.art{position:absolute;z-index:-1;right:-5px;top:73px;width:49%;height:205px;filter:drop-shadow(0 18px 12px #0003)}.brands{margin:auto 0 16px;padding-top:28px;font-size:9px;color:var(--muted)}.bottom{display:flex;align-items:center;justify-content:space-between;gap:12px}.action{display:inline-flex;align-items:center;justify-content:space-between;gap:26px;min-height:46px;padding:0 17px;border-radius:11px;background:var(--ink);color:white;font-size:12px;font-weight:700}.dark .action{background:var(--red)}.number{font-size:26px;font-weight:750;opacity:.3}.mod.soon .action{background:#697073}.mod.soon{opacity:.72}.future{display:flex;align-items:center;gap:16px;margin-top:23px;padding:19px 20px;border:1px dashed #d2d3cc;border-radius:17px}.future-icon{display:grid;place-items:center;width:36px;height:36px;flex-shrink:0;border-radius:10px;background:#e9e8e1;font-size:22px;color:#757b78}.future h2{margin:0;font-size:13px}.future p{margin:5px 0 0;font-size:11px;color:var(--muted);line-height:1.5}footer{margin-top:30px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:10px;letter-spacing:.04em}.archive-notice{display:block;width:100%;margin:0 0 24px;padding:14px;text-align:left;border:1px solid #e9d2a8;border-radius:12px;background:#fff9ed;color:#77521c;font-size:13px;cursor:pointer}dialog{width:min(500px,calc(100% - 28px));max-height:calc(100dvh - 40px);padding:0;border:1px solid var(--line);border-radius:23px;background:var(--paper);color:var(--ink);box-shadow:0 30px 90px #0003}dialog::backdrop{background:#161c2390;backdrop-filter:blur(5px)}.options-head{display:flex;justify-content:space-between;align-items:center;padding:22px;border-bottom:1px solid var(--line)}.options-head h2{margin:0;font-size:21px}.close{width:44px;font-size:24px}.options-body{padding:22px}.options-body h3{margin:0 0 16px;font-size:15px}.dcard{padding:18px;border:1px solid var(--line);border-radius:15px;background:white}.dcard.no{background:#fff9ed;border-color:#e9d2a8}.dserve{margin-bottom:14px;padding:12px;border-radius:10px;background:#fbe8e7;color:#92232a;font-size:13px;line-height:1.5}.dtop{display:flex;align-items:flex-start;gap:12px}.dpall{display:grid;place-items:center;flex-shrink:0;width:30px;height:30px;border-radius:9px;background:#e6f1e7;color:#2e653b}.dpall.no{background:#f7e5be;color:#825d15}.dtop b{font-size:14px}.dtop p{margin:6px 0 0;font-size:12px;color:var(--muted);line-height:1.6;overflow-wrap:anywhere}.dbtn{display:flex;flex-wrap:wrap;gap:9px;margin-top:17px}.dbt{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:#eeece6;color:var(--ink);font-size:12px;font-weight:650;cursor:pointer}.dbt.p{background:var(--red);border-color:var(--red);color:white}.dbt:focus-within{outline:3px solid #246cad;outline-offset:3px}.dbt input[type=file]{display:block!important;position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}.af-toast{position:fixed;z-index:100;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);width:max-content;max-width:90vw;padding:13px 18px;border-radius:12px;background:var(--ink);color:white;font-size:13px;text-align:center;box-shadow:0 10px 30px #0003}.af-toast.ok{background:#28623b}@media(hover:hover){.mod:not(.soon):hover{transform:translateY(-4px);box-shadow:0 18px 35px #24292d15}}@media(max-width:720px){.home{padding-left:20px;padding-right:20px}.modules{grid-template-columns:1fr;gap:16px}.mod{min-height:310px;padding:23px}.mod h2{font-size:34px}.kicker{margin-bottom:22px}.art{top:59px;height:180px}.intro{padding-top:33px}}@media(max-width:370px){.brand-copy strong{font-size:10px}.brand-copy span{font-size:8px}.settings{padding:0 9px}.mod h2{font-size:30px}.description{font-size:11px}h1{font-size:36px}}@media(prefers-reduced-motion:no-preference){.intro{animation:enter .45s ease-out both}.mod{animation:enter .5s ease-out both}.mod:nth-child(2){animation-delay:.08s}@keyframes enter{from{opacity:0;translate:0 10px}to{opacity:1;translate:0 0}}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
-</style></head><body>
-<main class="home"><header class="top"><div class="brand"><div class="brand-mark" aria-hidden="true">AF</div><div class="brand-copy"><strong>FRANZINI ANNIBALE</strong><span>PROGETTO SICUREZZA</span></div></div><button class="settings" id="open-options" type="button" aria-haspopup="dialog" aria-controls="options">Opzioni</button></header>
-<section class="intro" aria-labelledby="home-title"><p class="eyebrow">STRUMENTI PER IL BANCO</p><h1 id="home-title">Ogni porta,<br>la sua <span>soluzione.</span></h1><p class="intro-copy">Configura il prodotto.<br>Trova i codici giusti.</p></section>
-<button id="archive-notice" class="archive-notice" type="button" hidden>Importa l’archivio per iniziare → Apri Opzioni</button>
-<h2 class="section-label" id="modules-title">CONFIGURATORI</h2><section class="modules" aria-labelledby="modules-title">
-<a class="mod dark" href="./maniglioni/index.html"><p class="kicker">01 / USCITE DI EMERGENZA</p><h2>Maniglioni<br>antipanico</h2><p class="description">Dalla porta alla lista da ordinare.</p><svg class="art" viewBox="0 0 220 220" fill="none" aria-hidden="true"><defs><linearGradient id="door" x2="1" y2="1"><stop stop-color="#566169"/><stop offset="1" stop-color="#252c30"/></linearGradient><linearGradient id="steel" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f2f5f6"/><stop offset=".4" stop-color="#b7c4ca"/><stop offset=".6" stop-color="#e2e8eb"/><stop offset="1" stop-color="#7a8a94"/></linearGradient></defs><g transform="translate(16 6) rotate(-9 105 110)"><rect x="66" y="12" width="100" height="193" rx="7" fill="url(#door)" stroke="#7e8b93"/><path d="M76 197V22h80v175" stroke="#a4b1b7" stroke-opacity=".4"/><rect x="45" y="94" width="143" height="22" rx="8" fill="url(#steel)"/><rect x="49" y="90" width="23" height="30" rx="6" fill="url(#steel)"/><rect x="162" y="90" width="23" height="30" rx="6" fill="url(#steel)"/><path d="M75 101h84" stroke="#f6f8f9" stroke-width="2"/></g></svg><p class="brands">CISA · ISEO · Antipanic</p><div class="bottom"><span class="action">Configura <span aria-hidden="true">→</span></span><span class="number" aria-hidden="true">01</span></div></a>
-<a class="mod" href="./cilindri/index.html"><p class="kicker">02 / CONTROLLO ACCESSI</p><h2>Cilindri</h2><p class="description">La misura esatta.<br>Il codice giusto.</p><svg class="art" viewBox="0 0 220 220" fill="none" aria-hidden="true"><defs><linearGradient id="brass" x2="1" y2="1"><stop stop-color="#f0dfb6"/><stop offset=".45" stop-color="#c4a465"/><stop offset="1" stop-color="#897043"/></linearGradient><linearGradient id="brass-front" x2="1" y2="1"><stop stop-color="#f6e8c8"/><stop offset="1" stop-color="#c4a56b"/></linearGradient></defs><g opacity=".35" stroke="#9b9f94"><path d="M40 192h144M44 184v16m136-16v16M189 48v128m-7-124h14m-14 120h14"/></g><g transform="translate(0 2) rotate(-17 115 110)"><path d="M94 62l48-20c44 0 58 51 26 73v52l-48 20-26-72z" fill="url(#brass)" stroke="#9d804c"/><path d="M64 100a39 39 0 1 1 65 29v43a10 10 0 0 1-10 10H96a10 10 0 0 1-10-10v-43a39 39 0 0 1-22-29z" fill="url(#brass-front)" stroke="#b3945f" stroke-width="2"/><circle cx="103" cy="95" r="25" fill="#dfca9c" stroke="#af9056" stroke-width="2"/><path d="M101 82h7v15l-3 5v9h-7V96l3-4z" fill="#60533a"/><circle cx="108" cy="157" r="5" fill="#9f8149" stroke="#f2dfb5"/></g></svg><p class="brands">CISA · ISEO · Omec · Viro</p><div class="bottom"><span class="action">Trova cilindro <span aria-hidden="true">→</span></span><span class="number" aria-hidden="true">02</span></div></a>
-<a class="mod" id="ferro-configurator" href="./serrature-da-ferro/index.html"><p class="kicker">03 / SERRATURE</p><h2>Serrature<br>da ferro</h2><p class="description">Scegli impiego, tipo e misure.<br>Trova i codici compatibili.</p><p class="brands">Archivio serrature importato da Opzioni</p><div class="bottom"><span class="action">Configura <span aria-hidden="true">→</span></span><span class="number" aria-hidden="true">03</span></div></a></section>
-<footer>AF · STRUMENTI PER IL BANCO · USO INTERNO</footer></main>
-<dialog id="options" aria-labelledby="options-title"><div class="options-head"><h2 id="options-title">Opzioni</h2><button type="button" class="close" id="close-options" aria-label="Chiudi opzioni">×</button></div><div class="options-body"><h3>Archivio dati</h3><div id="dati"></div></div></dialog>
-<script src="./dati.js"></script><script src="./dati-home.js"></script>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Progetto Sicurezza AF</title>
+<link rel="stylesheet" href="home.css">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#c4161c">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Sicurezza AF">
+<meta name="format-detection" content="telephone=no">
+<link rel="apple-touch-icon" href="./ico/apple-touch-icon.png">
+<link rel="icon" href="./ico/icona-192.png">
+<link rel="manifest" href="./manifest.json">
+<link rel="stylesheet" href="./mobile.css">
+</head>
+<body>
+<div class="home">
+ <header>
+  <div class="logo">AF</div>
+  <div class="tit">
+   <h1>Progetto Sicurezza</h1>
+   <p>Franzini · uso interno. Scegli cosa ti serve: il programma ti porta ai codici giusti dell'assortimento.</p>
+  </div>
+ </header>
+
+ <h2 class="sec">DATI</h2>
+ <div id="dati"></div>
+
+ <h2 class="sec">PRONTI DA USARE</h2>
+ <div class="grid">
+
+  <a class="mod" href="maniglioni/index.html">
+   <div class="ic">
+    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round">
+     <rect x="12" y="7" width="31" height="50" rx="2.5" stroke-width="2.6"/>
+     <path d="M16 30h31"/><circle cx="47" cy="30" r="4.2" fill="currentColor" stroke="none"/>
+     <path d="M52 17v26" stroke-width="2.2"/>
+    </svg>
+   </div>
+   <div class="tx">
+    <b>Maniglioni antipanico</b>
+    <p>Porta, punti di chiusura, marca e serie: ti dà tutti i codici da ordinare, con la stampa del foglio di lavoro.</p>
+    <span class="tag">CISA · ISEO · Antipanic</span>
+   </div>
+   <div class="go">›</div>
+  </a>
+
+  <a class="mod" href="cilindri/index.html">
+   <div class="ic">
+    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round">
+     <circle cx="32" cy="20" r="11"/><path d="M23 29h18v26a2 2 0 0 1-2 2H25a2 2 0 0 1-2-2z"/>
+     <path d="M32 16v8" stroke-width="3.4"/><circle cx="32" cy="45" r="3" fill="currentColor" stroke="none"/>
+    </svg>
+   </div>
+   <div class="tx">
+    <b>Cilindri</b>
+    <p>Dai la misura e ti dice cosa hai in assortimento, con la scheda tecnica da spiegare al cliente.</p>
+    <span class="tag">CISA · ISEO · Omec · Viro</span>
+   </div>
+   <div class="go">›</div>
+  </a>
+
+  <a class="mod" href="serrature-da-ferro/index.html">
+   <div class="ic">
+    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+     <rect x="14" y="10" width="26" height="44" rx="2.5"/>
+     <path d="M40 18h8v28h-8"/>
+     <circle cx="27" cy="28" r="4.6"/><path d="M27 32.6V40"/>
+    </svg>
+   </div>
+   <div class="tx">
+    <b>Serrature da ferro</b>
+    <p>Dove va installata, tipo e misure: ti dà i codici compatibili dell'archivio serrature.</p>
+    <span class="tag">Cancelli · serrande · basculanti · tagliafuoco</span>
+   </div>
+   <span class="go">›</span>
+  </a>
+
+ </div>
+
+ <h2 class="sec">IN ARRIVO</h2>
+ <div class="grid">
+  <div class="mod soon"><div class="ic">A</div><div class="tx"><b>Serrature da applicare</b><p>Serrature e elettroserrature applicate alla porta.</p></div></div>
+  <div class="mod soon"><div class="ic">C</div><div class="tx"><b>Serrature da cancello</b><p>Cancelletti e cancelli, con i relativi accessori.</p></div></div>
+  <div class="mod soon"><div class="ic">P</div><div class="tx"><b>Serrature da scuretti</b><p>Scuri, persiane e serramenti piccoli.</p></div></div>
+ </div>
+
+ <footer>Progetto Sicurezza AF · il configuratore cresce un pezzo alla volta: ogni blocco nuovo entra qui.</footer>
+</div>
+<script src="./dati.js"></script>
+<script src="./dati-home.js"></script>
+<script src="./mobile.js"></script>
 <script>
-'use strict';
-const options=document.getElementById('options');
-const opener=document.getElementById('open-options');
-const notice=document.getElementById('archive-notice');
-function openOptions(){if(!options.open)options.showModal();}
-opener.addEventListener('click',openOptions);
-notice.addEventListener('click',openOptions);
-document.getElementById('close-options').addEventListener('click',()=>options.close());
-options.addEventListener('click',e=>{if(e.target!==options)return;const b=options.getBoundingClientRect();if(e.clientX<b.left||e.clientX>b.right||e.clientY<b.top||e.clientY>b.bottom)options.close();});
-function syncArchive(){let ready=false;try{ready=!!(window.AF&&window.AF.leggi());}catch(e){console.warn('Archivio non disponibile',e);}notice.hidden=ready;document.querySelectorAll('.mod[href]').forEach(a=>{const enabled=a.id==='ferro-configurator'||ready;a.classList.toggle('soon',!enabled);a.setAttribute('aria-disabled',String(!enabled));a.tabIndex=enabled?0:-1;a.style.pointerEvents=enabled?'':'none';});}
-new MutationObserver(syncArchive).observe(document.getElementById('dati'),{childList:true});
-syncArchive();
-document.querySelectorAll('.mod[href]').forEach(a=>a.addEventListener('click',e=>{if(a.getAttribute('aria-disabled')==='true'){e.preventDefault();openOptions();}}));
-if(new URLSearchParams(location.search).has('serve'))openOptions();
-if('serviceWorker' in navigator&&location.protocol==='https:'){window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js',{scope:'./'}).then(r=>r.update()).catch(e=>console.warn('Aggiornamento offline non riuscito',e));});}
-</script></body></html>
+if("serviceWorker" in navigator && location.protocol === "https:"){
+  window.addEventListener("load", function(){
+    navigator.serviceWorker.register("./sw.js", {scope:"./"}).catch(function(){});
+  });
+}
+</script>
+</body>
+</html>
