@@ -1,7 +1,7 @@
 /* Progetto Sicurezza AF — memoria per l'uso senza rete.
    Pagine e programmi: prima la rete, così gli aggiornamenti si vedono subito;
    se la rete non c'è si usa la copia tenuta da parte. */
-const CACHE = "af-sicurezza-v6";
+const CACHE = "af-sicurezza-v7";
 const FILE = [
   "./", "./index.html", "./home.css", "./mobile.css", "./mobile.js", "./manifest.json",
   "./dati.js", "./dati-home.js",
