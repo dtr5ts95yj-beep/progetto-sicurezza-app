@@ -11,7 +11,11 @@ const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c =>
 const BASTA = 12;          // sotto questo numero si va dritti ai risultati
 
 /* ---------- gli articoli ---------- */
-function tutti(){ return window.SERRATURE || []; }
+const SOLO = window.AF_SOLO || "";
+function tutti(){
+  const t = window.SERRATURE || [];
+  return SOLO ? t.filter(x => x.impiego === SOLO) : t.filter(x => x.impiego !== "lucchetti");
+}
 
 function famiglia(x){
   if(x.fam === "accessori") return "accessori";
@@ -23,16 +27,16 @@ function famiglia(x){
 
 /* ---------- le domande possibili ---------- */
 const DOMANDE = [
-  { id:"famiglia", q:"Che cos'è?", val: famiglia,
-    nomi:{serrature:"Serratura", catenacci:"Catenaccio o paletto", lucchetti:"Lucchetto",
-          elettriche:"Elettroserratura o incontro", accessori:"Ricambio o accessorio"} },
-  { id:"tipo", peso:1, q:"Da infilare o da applicare?", val: x => x.tipo,
+  { id:"tipo", peso:1, q:"Da applicare o da infilare?", val: x => x.tipo,
     nomi:{infilare:"Da infilare", applicare:"Da applicare"} },
+  { id:"punti", peso:.96, q:"Quanti punti di chiusura?", val: x => (x.punti ? String(x.punti) : ""),
+    nomi:{"1":"1 punto", "2":"2 punti", "3":"3 punti", "4":"4 punti", "5":"5 punti"} },
   { id:"impiego", peso:.95, q:"Dove va montata?", val: x => (x.impiego === "altro" ? "" : x.impiego),
-    nomi:{cancelli:"Cancello o inferriata", serrande:"Serranda o persiana", fascia:"Fascia o basculante",
-          montanti:"Montante", tagliafuoco:"Porta tagliafuoco", casseforti:"Cassaforte",
-          blindate:"Porta blindata", legno:"Porta in legno", scuretti:"Scuri o persiane",
-          } },
+    nomi:{fascia:"A fascia o basculante", montanti:"Da montante", legno:"Porta in legno",
+          interne:"Porta interna", blindate:"Porta blindata o alluminio", serrande:"Serranda o persiana",
+          cancelli:"Cancello o inferriata", tagliafuoco:"Porta tagliafuoco", scuretti:"Scuri",
+          casseforti:"Cassaforte", lucchetti:"Lucchetto", catenacci:"Catenaccio o paletto",
+          elettriche:"Elettroserratura o incontro"} },
   { id:"entrata", peso:.9, q:"Che entrata?",   val: x => x.entrata,   mis:"mm", disegno:true },
   { id:"interasse", peso:.8, q:"Che interasse?", val: x => x.interasse, mis:"mm", disegno:true },
   { id:"lung", peso:.9, q:"Che lunghezza?", val: x => (x.lung ? String(x.lung) : ""), mis:"mm" },
@@ -97,8 +101,15 @@ function punteggio(lista, d){
   return gini * copertura * (d.peso == null ? 1 : d.peso);   // divide bene, su molti, ed e' una domanda facile
 }
 
+const ORDINE = ["tipo", "impiego", "punti"];
 function prossima(lista){
-  if(!("famiglia" in S.risposte) && punteggio(lista, DOM.famiglia) > 0) return DOM.famiglia;
+  /* prima le domande che si fanno al banco, nell'ordine giusto */
+  for(const id of ORDINE){
+    if(id in S.risposte) continue;
+    const m = conteggi(lista, DOM[id]);
+    const noti = [...m.values()].reduce((a, b) => a + b, 0);
+    if(m.size >= 2 && noti >= 8) return DOM[id];   // basta che divida qualcosa
+  }
   let best = null, bp = 0;
   for(const d of DOMANDE){
     if(d.id in S.risposte) continue;
@@ -263,7 +274,7 @@ function render(){
                           : "Dal centro del quadro maniglia al centro del foro chiave.")
     : "";
 
-  $("crumb").innerHTML = "Serrature · <b>" + esc(finito ? "Cosa abbiamo" : d.q.replace("?", "")) + "</b>";
+  $("crumb").innerHTML = (window.AF_TITOLO || "Serrature") + " · <b>" + esc(finito ? "Cosa abbiamo" : d.q.replace("?", "")) + "</b>";
   const n = Object.keys(S.risposte).length;
   $("passo").textContent = finito ? lista0.length + " articoli" : (n ? n + " risposte date" : "");
 

@@ -52,7 +52,7 @@ window.AF = {
     entrata: x.entrata != null ? String(x.entrata) : "",
     interasse: x.interasse != null ? String(x.interasse) : "",
     frontale: x.frontale != null ? String(x.frontale) : "",
-    lung: x.lung || null, fam: x.fam, fonte: x.fonte || ""
+    lung: x.lung || null, punti: x.punti || null, fam: x.fam, fonte: x.fonte || ""
   }));
 
   /* i cilindri con i nomi di campo che il modulo usa da sempre */
