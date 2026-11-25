@@ -193,3 +193,16 @@ h1{font-size:26px;font-weight:700;letter-spacing:-.01em}
 .rh{font-size:11px;font-weight:700;letter-spacing:.8px;color:#8e8e93;margin:20px 2px 9px}
 .sub{font-size:13.5px;color:#6e6e73;margin:5px 0 15px}
 .btn[hidden]{display:none!important}
+
+/* risposte con disegnino e spiegazione, come nei maniglioni */
+.opt .mini{width:56px;height:72px;flex:none;display:flex;align-items:center;justify-content:center;
+  background:#f7f7f9;border-radius:9px;overflow:hidden}
+.opt .mini svg{display:block}
+.opt .txt{flex:1;min-width:0}
+.opt .txt b{display:block;font-size:15.5px;font-weight:650;line-height:1.25}
+.opt .txt p{font-size:12.5px;color:#6e6e73;margin-top:3px;line-height:1.4}
+.opt .qti{display:inline-block;margin-top:6px;font-size:11.5px;font-weight:700;color:#8e8e93;
+  background:#f2f2f7;border-radius:6px;padding:2px 7px}
+.opt.sel .qti{background:#e3f0ff;color:#0a7aff}
+.opt.salta .mini{display:none}
+.opt{align-items:center}

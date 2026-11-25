@@ -228,13 +228,20 @@ function pagDomanda(d, lista){
       + `</div></div>`;
   } else {
     h += voci.map(([v, n]) => {
+      const k = d.id + ":" + v;
       const et = (d.nomi && d.nomi[v]) || v;
+      const dis = (window.MINI || {})[k] || "";
+      const sp  = (window.SPIEGA || {})[k] || "";
       return `<button class="opt" type="button" data-rispondo="${esc(d.id)}" data-v="${esc(v)}">`
-        + `<div><b>${esc(et)}</b></div><span class="cnt">${n}</span><span class="radio"></span></button>`;
+        + (dis ? `<div class="mini">${dis}</div>` : "")
+        + `<div class="txt"><b>${esc(et)}</b>` + (sp ? `<p>${esc(sp)}</p>` : "")
+        + `<span class="qti">${n} ${n === 1 ? "articolo" : "articoli"}</span></div>`
+        + `<span class="radio"></span></button>`;
     }).join("");
   }
   h += `<button class="opt salta" type="button" data-salto="${esc(d.id)}">`
-    + `<div><b>Non lo so</b><p>Vai avanti senza rispondere${senza ? ", " + senza + " articoli non hanno questo dato" : ""}.</p></div>`
+    + `<div class="txt"><b>Non lo so</b><p>Vado avanti senza questa risposta`
+    + (senza ? `: ${senza} articoli non hanno il dato scritto` : "") + `.</p></div>`
     + `<span class="radio"></span></button>`;
   return h;
 }
@@ -265,14 +272,18 @@ function render(){
   $("page").innerHTML = finito ? pagRisultati() : pagDomanda(d, lista0);
 
   const corpo = document.querySelector(".body");
-  const conMis = !finito && d && d.disegno;
-  if(corpo) corpo.classList.toggle("m-nohero", !conMis);
-  if(conMis) disegno(d.id);
+  if(corpo) corpo.classList.toggle("m-nohero", finito);
+  if(!finito) disegno(d ? d.id : "");
   const cap = $("herocap");
-  if(cap) cap.textContent = conMis
-    ? (d.id === "entrata" ? "Dal bordo del frontale al centro del foro chiave."
-                          : "Dal centro del quadro maniglia al centro del foro chiave.")
-    : "";
+  const DID = {
+    tipo:      "Serratura vista di fronte · il frontale è il bordo che si vede a porta aperta",
+    impiego:   "Serratura vista di fronte · scegli su che cosa la stai montando",
+    punti:     "I punti di chiusura escono dal frontale, sul bordo della porta",
+    entrata:   "Entrata · dal bordo del frontale al centro del foro chiave",
+    interasse: "Interasse · dal centro del quadro maniglia al centro del foro chiave",
+    lung:      "La lunghezza del pezzo, da un estremo all'altro"
+  };
+  if(cap) cap.textContent = finito ? "" : (DID[d.id] || "Serratura vista di fronte");
 
   $("crumb").innerHTML = (window.AF_TITOLO || "Serrature") + " · <b>" + esc(finito ? "Cosa abbiamo" : d.q.replace("?", "")) + "</b>";
   const n = Object.keys(S.risposte).length;

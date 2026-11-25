@@ -1,7 +1,7 @@
 /* Progetto Sicurezza AF — memoria per l'uso senza rete.
    Pagine e programmi: prima la rete, così gli aggiornamenti si vedono subito;
    se la rete non c'è si usa la copia tenuta da parte. */
-const CACHE = "af-sicurezza-v8";
+const CACHE = "af-sicurezza-v9";
 const FILE = [
   "./", "./index.html", "./home.css", "./mobile.css", "./mobile.js", "./manifest.json",
   "./dati.js", "./dati-home.js",
@@ -11,7 +11,7 @@ const FILE = [
   "./cilindri/cilindri.js", "./cilindri/schede.js",
   "./maniglioni/index.html", "./maniglioni/style.css",
   "./maniglioni/code128.js", "./maniglioni/app.js", "./maniglioni/gestione.js",
-  "./serrature-da-ferro/index.html", "./serrature-da-ferro/style.css", "./serrature-da-ferro/app.js", "./lucchetti/index.html"
+  "./serrature-da-ferro/index.html", "./serrature-da-ferro/style.css", "./serrature-da-ferro/app.js", "./serrature-da-ferro/mini.js", "./lucchetti/index.html"
 ];
 
 self.addEventListener("install", e => {
